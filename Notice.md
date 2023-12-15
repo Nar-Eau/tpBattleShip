@@ -31,7 +31,8 @@ Ce code JavaScript représente une version du jeu de bataille navale, implément
 - `checkScore()`: Vérifie le score pour déterminer la fin de la partie.
 
 ## Utilisation
-- Chargez le fichier HTML dans un navigateur web pour jouer à la bataille navale.
+- Unzipepd le projet battleships
+- lancer le fichier HTML "index" dans ".\Downloads\tpBattleShip-main\index" pour jouer à la bataille navale.
 - Placez les bateaux en les déplaçant avec la souris.
 - Commencez la partie en cliquant sur "Commencer".
 

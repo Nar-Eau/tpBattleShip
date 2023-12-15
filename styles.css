@@ -175,7 +175,7 @@ button:hover, button:focus {
 #computer .submarin,
 #computer .patrouilleur,
 #computer .portAvion {
-    background-color: white;
+    background:none;
 }
 
 /*quand bateau touché*/

@@ -1,4 +1,4 @@
-const gamesBoardContainer = document.querySelector('#gamesboard-container');
+const gamesBoardContainer = document.querySelector('#gamesboard-container'); 
 const optionContainer = document.querySelector('#option-container');
 const flipButton = document.querySelector('#sens-button');
 const startButton = document.querySelector('#start-button');
@@ -14,12 +14,12 @@ function flip() {
     if (angle === 0) {
         angle = 90;
         optionShips.forEach(optionShip => optionShip.style.transform = `rotate(90deg)`);
-        optionContainer.style.height = 200+"px";
+        optionContainer.style.height = "200px";
         flipButton.textContent = 'Horizontale';
     } else if (angle === 90) {
         angle = 0;
         optionShips.forEach(optionShip => optionShip.style.transform = `rotate(0deg)`);
-        optionContainer.style.height = 40+"px";
+        optionContainer.style.height = "40px";
         flipButton.textContent = 'Verticale';
     }
 }
@@ -27,20 +27,17 @@ function flip() {
 const width = 10;
 
 function createBoard(user) {
+    const gamesBoardContainer = document.querySelector('#gamesboard-container');
     const usersContainer = document.createElement('div');
     usersContainer.classList.add('users');
-    usersContainer.id = user+"-container";
-
-
+    usersContainer.id = user + "-container";
 
     const usersPicture = document.createElement('img');
     usersPicture.classList.add('userPicture');
-    usersPicture.src = "img/"+user+".gif";
 
     const gameBoardContainer = document.createElement('div');
     gameBoardContainer.classList.add('game-board');
     gameBoardContainer.id = user;
-
 
     for (let i = 0; i < width * width; i++) {
         const block = document.createElement('div');
@@ -63,11 +60,15 @@ class Ship {
 }
 
 const portAvion = new Ship('portAvion', 5);
-const destroyer = new Ship('destroyer', 3);
+const destroyer1 = new Ship('destroyer', 3);
+const destroyer2 = new Ship('destroyer', 3);
+const destroyer3 = new Ship('destroyer', 3);
+const patrouilleur1 = new Ship('patrouilleur', 2);
+const patrouilleur2 = new Ship('patrouilleur', 2);
 const submarin = new Ship('submarin', 3);
-const patrouilleur = new Ship('patrouilleur', 2);
 
-const ships = [portAvion, destroyer, submarin, patrouilleur];
+const ships = [portAvion,destroyer1,destroyer2,destroyer3,patrouilleur1,patrouilleur2,submarin];
+
 let notDropped;
 
 function getValidity(allBoardBlocks, isHorizontal, startIndex, ship) {
@@ -202,6 +203,31 @@ function handleClick(e) {
             classes = classes.filter(className => className !== 'boom');
             classes = classes.filter(className => className !== 'taken');
             playerHits.push(...classes);
+
+            if (e.target.classList.contains('submarin')) {
+                let index = Array.from(e.target.parentNode.children).indexOf(e.target);
+                let horizontal = angle === 0;
+
+                for (let i = index + 1; i < width * width; i++) {
+                    let currentBlock = horizontal ? e.target.parentNode.children[i] : 
+                        document.getElementById(i - index + Number(e.target.id));
+                    
+                    if (!currentBlock) break; 
+
+                    if (currentBlock.classList.contains('taken') && !currentBlock.classList.contains('boom')) {
+                        currentBlock.classList.add('boom');
+                        let currentBlockClasses = Array.from(currentBlock.classList);
+                        currentBlockClasses = currentBlockClasses.filter(className => className !== 'block');
+                        currentBlockClasses = currentBlockClasses.filter(className => className !== 'boom');
+                        currentBlockClasses = currentBlockClasses.filter(className => className !== 'taken');
+                        playerHits.push(...currentBlockClasses);
+                        
+                    } else {
+                        break; 
+                    }
+                }
+            }
+
             checkScore('player', playerHits, playerSunkShips);
         }
         if (!e.target.classList.contains('taken')) {
@@ -215,7 +241,8 @@ function handleClick(e) {
     }
 }
 
-// définir le tour de l'ordinateur
+
+
 function computerGo() {
     if (!gameOver) {
         turn.textContent = 'Au tour de l ordinateur';
@@ -252,8 +279,8 @@ function computerGo() {
             allBoardBlocks.forEach(block => block.addEventListener('click', handleClick));
         }, 6000);
     } else {
-            document.getElementById('overlay').style.display = "block";
-            document.getElementById('popup').style.display = "grid";
+        document.getElementById('overlay').style.display = "block";
+        document.getElementById('popup').style.display = "grid";
     }
 }
 
@@ -280,19 +307,19 @@ function checkScore(user, userHits, userSunkShips) {
     console.log('playerHits', playerHits);
     console.log('playerSunkShips', playerSunkShips);
 
-    if (playerSunkShips.length === 4) {
-        document.getElementById("#resultat").innerHTML = 'Vous avez coulé tous les navires de guerre ennemis. Well Done !';
+    if (playerSunkShips.length === 7) {
+        document.getElementById("resultat").innerHTML = 'Vous avez coulé tous les navires de guerre ennemis. Well Done !';
         gameOver = true;
     }
-    if (computerSunkShips.length === 4) {
-        document.getElementById("#resultat").innerHTML = 'Vous avez perdu tous vos navires de guerre. Try again !';
+    if (computerSunkShips.length === 7) {
+        document.getElementById("resultat").innerHTML = 'Vous avez perdu tous vos navires de guerre. Try again !';
         gameOver = true;
     }
 }
 
 document.getElementById("resultat").append('Partie en cours ...');
 
-//restart game
+
 document.getElementById('restart-button').addEventListener('click', function () {
     location.reload();
 })

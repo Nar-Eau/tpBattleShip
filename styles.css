@@ -57,9 +57,10 @@ button:hover, button:focus {
 }
 
 #player-container .userPicture{
-    height: 300px;
-    width: 300px;
+    height: 400px;
+    width: 400px;
     left: 0;
+    background-image: url("img/player.gif");
 }
 
 #computer-container {
@@ -67,9 +68,10 @@ button:hover, button:focus {
 }
 
 #computer-container .userPicture{
-    height: 300px;
-    width: 300px;
+    height: 400px;
+    width: 400px;
     left: 0;
+    background-image: url("img/computer.gif");
 }
 
 #computer .block {
@@ -113,14 +115,14 @@ button:hover, button:focus {
 }
 
 .game-board{
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    height: 400px;
     display: flex;
     flex-wrap: wrap;
 }
 .block {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     border: solid 1px chartreuse;
     box-sizing: border-box;
 }
@@ -135,7 +137,7 @@ button:hover, button:focus {
 .destroyer-review{
     width: 120px;
     height: 40px;
-    margin: 3px;
+    margin:3px;
 }
 .destroyer{
     background-color: chartreuse;
@@ -143,7 +145,7 @@ button:hover, button:focus {
 .patrouilleur-review{
     width: 80px;
     height: 40px;
-    margin: 3px;
+    margin:3px;
 }
 .patrouilleur{
     background-color: chartreuse;
@@ -151,7 +153,7 @@ button:hover, button:focus {
 .submarin-review{
     width: 120px;
     height: 40px;
-    margin: 3px;
+    margin:3px;
 }
 .submarin{
     background-color: chartreuse;
@@ -173,7 +175,7 @@ button:hover, button:focus {
 #computer .submarin,
 #computer .patrouilleur,
 #computer .portAvion {
-    background: none;
+    background-color: white;
 }
 
 /*quand bateau touché*/

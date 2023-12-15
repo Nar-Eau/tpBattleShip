@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>BattleShips </title>
+    <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+    <div id="overlay"></div>
+    <div id="popup">
+        <span id="resultat">ddddddd</span>
+        <button id="restart-button">Recommencer</button>
+    </div>
+
+    <div id="gamesboard-container">
+        <div class="control-panel">
+            <div id="game-info">
+                <p>Tour : <span id="turn-display"></span></p>
+                <p>Info : <span id="info"></span></p>
+            </div>
+            <div id="action">
+                <div id="option-container">
+                    <!-- 1 5n --><div id="0" class="portAvion-review portAvion" draggable="true"></div>
+                    <!-- 3 3n --><div id="1" class="destroyer-review destroyer" draggable="true"></div>
+                    <!-- 1 3n --><div id="2" class="submarin-review submarin" draggable="true"></div>
+                    <!-- 2 2n --><div id="3" class="patrouilleur-review patrouilleur" draggable="true"></div>
+                </div>
+                <div>
+                    <button id="sens-button">Tourner</button>
+                    <button id="start-button">Commencer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>

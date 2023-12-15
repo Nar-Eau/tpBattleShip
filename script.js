@@ -280,14 +280,16 @@ function checkScore(user, userHits, userSunkShips) {
     console.log('playerSunkShips', playerSunkShips);
 
     if (playerSunkShips.length === 4) {
-        info.textContent = 'Vous avez coulé tous les navires de guerre ennemis. Well Done !';
+        document.getElementById("#resultat").innerHTML = 'Vous avez coulé tous les navires de guerre ennemis. Well Done !';
         gameOver = true;
     }
     if (computerSunkShips.length === 4) {
-        info.textContent = 'Vous avez perdu tous vos navires de guerre. Try again !';
+        document.getElementById("#resultat").innerHTML = 'Vous avez perdu tous vos navires de guerre. Try again !';
         gameOver = true;
     }
 }
+
+document.getElementById("resultat").append('Partie en cours ...');
 
 //restart game
 document.getElementById('restart-button').addEventListener('click', function () {

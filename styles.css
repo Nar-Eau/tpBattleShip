@@ -95,13 +95,16 @@ button:hover, button:focus {
     padding: 3rem;
     position: absolute;
     display: none;
+    width: 400px;
     text-align: center;
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
 }
 
-
+#resultat {
+    margin-bottom: 1rem;
+}
 
 #gamesboard-container{
     display: flex;

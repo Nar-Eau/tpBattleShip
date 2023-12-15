@@ -34,7 +34,8 @@ function createBoard(user) {
 
 
     const usersPicture = document.createElement('img');
-    usersPicture.classList.add('userPicture')
+    usersPicture.classList.add('userPicture');
+    usersPicture.src = "img/"+user+".gif";
 
     const gameBoardContainer = document.createElement('div');
     gameBoardContainer.classList.add('game-board');
